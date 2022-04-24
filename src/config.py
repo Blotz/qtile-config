@@ -125,8 +125,8 @@ def switch_screens(qtile):
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+
+    subprocess.call([f"{os.path.dirname(__file__)}/autostart.sh"])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

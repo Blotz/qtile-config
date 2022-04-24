@@ -1,19 +1,19 @@
 import os
-from libqtile import bar, widget
+from libqtile import bar, widget, qtile
 from libqtile.command import lazy
 from libqtile.config import Screen
 
 from custom_widgets.vpn_checker import ConnectionStatus
 
 from settings import COLORS
+from settings import TERM as myTerm
+#from config import qtile
 
 
 class MyWidgets:
     def __init__(self):
 
         # Background wallpaper
-        self.screen1_wallpaper = "~/.config/qtile/backgrounds/firewatch.png"
-        self.screen2_wallpaper = "~/.config/qtile/backgrounds/firewatch.png"
         self.wallpaper_mode = "stretch"
 
     def init_widgets_list(self):
@@ -295,7 +295,7 @@ class MyWidgets:
         '''
         Init the widgets in the screen
         '''
-        return [Screen(top=bar.Bar(widgets=self.init_widgets_screen(), opacity=1.0, size=20), wallpaper_mode=self.wallpaper_mode, wallpaper=self.screen1_wallpaper),
+        return [Screen(top=bar.Bar(widgets=self.init_widgets_screen(), opacity=1.0, size=20), wallpaper_mode=self.wallpaper_mode),
                 Screen(top=bar.Bar(
-                    widgets=self.init_widgets_screen2(), opacity=1.0, size=20), wallpaper_mode=self.wallpaper_mode, wallpaper=self.screen2_wallpaper)
+                    widgets=self.init_widgets_screen2(), opacity=1.0, size=20), wallpaper_mode=self.wallpaper_mode)
                 ]
