@@ -216,13 +216,17 @@ def init_widgets_screen2():
     It can be modified so it is useful if you  have a multimonitor system
     '''
     widgets_screen2 = init_widgets_screen()
+    # Remove Systray from second screens
+    for index, screen2_widget in enumerate(widgets_screen2):
+        if type(screen2_widget) == widget.systray.Systray():
+            widgets_screen2.remove(index)
     return widgets_screen2
 
 def init_screen():
     '''
     Init the widgets in the screen
     '''
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen(), opacity=1.0, size=20), wallpaper_mode=wallpaper_mode),
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen(), opacity=1.0, size=20)),
             Screen(top=bar.Bar(
-                widgets=init_widgets_screen2(), opacity=1.0, size=20), wallpaper_mode=wallpaper_mode)
+                widgets=init_widgets_screen2(), opacity=1.0, size=20))
             ]
