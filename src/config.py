@@ -27,10 +27,10 @@ from libqtile.log_utils import logger
 
 # Local Files
 from settings import COLORS
-
 from keys import KEYS
 from keys import MOUSE
 
+from hooks import *
 import widgets
 import layouts as layout_module
 
