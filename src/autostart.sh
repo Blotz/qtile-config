@@ -3,6 +3,7 @@
 dunst &
 lxsession &
 picom &
+volumeicon &
 # conky -c $HOME/.config/conky/doomone.conkyrc &
 flameshot &
 

@@ -8,6 +8,10 @@
 # 
 # https://github.com/blotz
 
+# # Mem leak tracing
+# import tracemalloc
+# tracemalloc.start()
+
 ####### IMPORTS ######
 import os
 import subprocess
@@ -23,38 +27,37 @@ from libqtile.log_utils import logger
 
 # Local Files
 from settings import COLORS
-# from keys.keybindings import Mouse,Keybindings
-from keys import mouse
-from keys import default
-from keys import hardwarekeys
-from keys import apps
 
-from widgets import MyWidgets
-from layouts import Layouts
-from groups import CreateGroups
+from keys import KEYS
+from keys import MOUSE
+
+import widgets
+import layouts as layout_module
 
 logger.info("Code is running")
 ###### MAIN ######
 if __name__ in ["config", "__main__"]:
     logger.info("Initalising objects")
-    # Initializes objects
-
-    # Initializes keybindings
-    # Mouse
-    obj_widgets       = MyWidgets()
-    obj_layouts       = Layouts()
-    obj_groups        = CreateGroups()
-
+    
     # Initializes qtile variables
-    keys              = default.init_keybindings()
-    keys             += hardwarekeys.init_keybindings()
-    keys             += apps.init_keybindings()
-    mouse             = mouse.init_keybindings()
+    keys              = KEYS
+    mouse             = MOUSE
 
-    layouts           = obj_layouts.init_layouts()
-    floating_layout   = obj_layouts.init_floating_layout()
+    layouts           = layout_module.init_layouts()
+    floating_layout = layout_module.init_floating_layout()
 
-    groups            = obj_groups.init_groups()
+    groups            = [
+        Group("DEV", layout='monadtall'),
+        Group("WWW", layout='monadtall'),
+        Group("SYS", layout='monadtall'),
+        Group("SYS", layout='monadtall'),
+        Group("DOC", layout='monadtall'),
+        Group("VBOX", layout='monadtall'),
+        Group("CHAT", layout='monadtall'),
+        Group("MUS", layout='monadtall'),
+        Group("VID", layout='monadtall'),
+        Group("GFX", layout='floating')
+        ]
 
     # Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
     # MOD4 + index Number : Switch to Group[index]
@@ -87,9 +90,9 @@ if __name__ in ["config", "__main__"]:
     )
     extension_defaults = widget_defaults.copy()
 
-    screens           = obj_widgets.init_screen()
-    main_widgets_list = obj_widgets.init_widgets_list()
-    widgets_screen1   = obj_widgets.init_widgets_screen()
+    screens           = widgets.init_screen()
+    main_widgets_list = widgets.init_widgets_list()
+    widgets_screen1   = widgets.init_widgets_screen()
 
 
 def window_to_prev_group(qtile):
@@ -137,3 +140,12 @@ def start_once():
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+# # tracemalloc output 
+# snapshot1 = tracemalloc.take_snapshot()
+# snapshot2 = tracemalloc.take_snapshot()
+# top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+
+# print("[ Top 10 ]")
+# for stat in top_stats[:10]:
+#     print(stat)

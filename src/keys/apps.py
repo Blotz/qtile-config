@@ -6,13 +6,12 @@ from settings import BROWSER as myBrowser
 from settings import MUSIC as myMusic
 from settings import CHAT as myChat
 
-def init_keybindings():
-    """Shortcuts to open apps"""
-    keys = [ 
-        Key([alt], "b",
+
+KEYS = [ 
+    Key([alt], "b",
         lazy.spawn(myBrowser),
         desc='Firefox'
-        ),
+    ),
     Key([alt], "m",
         lazy.spawn(myMusic),
         desc='Spotify'
@@ -21,6 +20,4 @@ def init_keybindings():
         lazy.spawn(myChat),
         desc='Discord'
         ),
-    ]
-
-    return keys
+]
