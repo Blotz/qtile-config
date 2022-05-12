@@ -10,7 +10,7 @@ from settings import TERM as myTerm
 #from config import qtile
 
 # Background wallpaper
-wallpaper_mode = "stretch"
+# wallpaper_mode = "stretch"
 
 def init_widgets_list():
     '''
@@ -218,7 +218,7 @@ def init_widgets_screen2():
     widgets_screen2 = init_widgets_screen()
     # Remove Systray from second screens
     del widgets_screen2[9]
-    
+
     return widgets_screen2
 
 def init_screen():
