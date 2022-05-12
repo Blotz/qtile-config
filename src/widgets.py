@@ -217,9 +217,8 @@ def init_widgets_screen2():
     '''
     widgets_screen2 = init_widgets_screen()
     # Remove Systray from second screens
-    for index, screen2_widget in enumerate(widgets_screen2):
-        if type(screen2_widget) == widget.systray.Systray():
-            widgets_screen2.remove(index)
+    del widgets_screen2[9]
+    
     return widgets_screen2
 
 def init_screen():
