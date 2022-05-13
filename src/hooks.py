@@ -1,3 +1,5 @@
+
+
 from libqtile import hook
 
 
@@ -22,11 +24,6 @@ def float_pycharm(window):
             and w_name == "win0"
         )
     ):
-        window.floating = True
-
-@hook.subscribe.client_new
-def float_alsamixer(window):
-    if window.window.get_name() == "alsamixer":
         window.floating = True
 
 # @hook.subscribe.client_new

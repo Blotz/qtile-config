@@ -1,3 +1,7 @@
+"""widgets.py
+Contains all the methods for intitalising qtile widgets
+"""
+
 import os
 from libqtile import bar, widget, qtile
 from libqtile.command import lazy

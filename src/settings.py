@@ -1,3 +1,7 @@
+"""settings.py
+Contains CONSTANTS which can be imported to
+other files
+"""
 COLORS = [["#282c34", "#282c34"],
           ["#1c1f24", "#1c1f24"],
           ["#dfdfdf", "#dfdfdf"],
