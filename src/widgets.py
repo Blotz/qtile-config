@@ -47,14 +47,14 @@ def init_widgets_list():
             padding_x=3,
             borderwidth=3,
             active=COLORS[2],
-            inactive=COLORS[7],
+            inactive=COLORS[9],
             rounded=False,
             highlight_color=COLORS[1],
             highlight_method="line",
-            this_current_screen_border=COLORS[6],
-            this_screen_border=COLORS[4],
-            other_current_screen_border=COLORS[6],
-            other_screen_border=COLORS[4],
+            this_current_screen_border=COLORS[5],
+            this_screen_border=COLORS[6],
+            other_current_screen_border=COLORS[5],
+            other_screen_border=COLORS[6],
             foreground=COLORS[2],
             background=COLORS[0]
         ),
@@ -88,7 +88,7 @@ def init_widgets_list():
             fontsize=14
         ),
         widget.WindowName(
-            foreground=COLORS[6],
+            foreground=COLORS[7],
             background=COLORS[0],
             padding=0
         ),
@@ -108,7 +108,7 @@ def init_widgets_list():
         widget.TextBox(
             text='',
             background=COLORS[0],
-            foreground=COLORS[6],
+            foreground=COLORS[3],
             padding=0,
             fontsize=37
         ),
@@ -122,9 +122,16 @@ def init_widgets_list():
             padding=5
         ),
         # Thermals
+        widget.TextBox(
+            text='',
+            background=COLORS[3],
+            foreground=COLORS[4],
+            padding=0,
+            fontsize=37
+        ),
         widget.ThermalSensor(
             foreground=COLORS[1],
-            background=COLORS[3],
+            background=COLORS[4],
             threshold=90,
             fmt='Temp: {}',
             padding=5
@@ -132,14 +139,28 @@ def init_widgets_list():
 
         ### NETWORKING
         # Networking
+        widget.TextBox(
+            text='',
+            background=COLORS[4],
+            foreground=COLORS[5],
+            padding=0,
+            fontsize=37
+        ),
         widget.Net(
             interface="wlan0",
             format='Net: {down} ↓↑ {up}',
             foreground=COLORS[1],
-            background=COLORS[4],
+            background=COLORS[5],
             padding=5
         ),
         # Wifi
+        widget.TextBox(
+            text='',
+            background=COLORS[5],
+            foreground=COLORS[6],
+            padding=0,
+            fontsize=37
+        ),
         widget.Wlan(
             interface='wlan0',
             format='{essid} {percent:2.0%}',
@@ -147,50 +168,85 @@ def init_widgets_list():
                 'Button1': lambda: qtile.cmd_spawn('connman_dmenu')},
             padding=5,
             foreground=COLORS[1],
-            background=COLORS[4],
+            background=COLORS[6],
         ),
 
         # RAM
+        widget.TextBox(
+            text='',
+            background=COLORS[6],
+            foreground=COLORS[7],
+            padding=0,
+            fontsize=37
+        ),
         widget.Memory(
             foreground=COLORS[1],
-            background=COLORS[5],
+            background=COLORS[7],
             fmt='MEM: {}',
             padding=5
         ),
 
         # Battery
+        widget.TextBox(
+            text='',
+            background=COLORS[7],
+            foreground=COLORS[8],
+            padding=0,
+            fontsize=37
+        ),
         widget.Battery(
             energy_now_file="charge_now",
             energy_full_file="charge_full",
             power_now_file="current_now",
             update_delay=6,
             foreground=COLORS[1],
-            background=COLORS[6],
+            background=COLORS[8],
             charge_char=u'↑',
             discharge_char=u'↓',
         ),
 
         # Volume
+        widget.TextBox(
+            text='',
+            background=COLORS[8],
+            foreground=COLORS[9],
+            padding=0,
+            fontsize=37
+        ),
         widget.Volume(
             foreground=COLORS[1],
-            background=COLORS[7],
+            background=COLORS[9],
             fmt='Vol: {}',
             padding=5
         ),
 
         # VPN
-        ConnectionStatus(
-            foreground=COLORS[1],
-            background=COLORS[8],
-            name="torronto",
-            fmt='vpn: {}',
-            padding=5
+        widget.TextBox(
+            text='',
+            background=COLORS[9],
+            foreground=COLORS[3],
+            padding=0,
+            fontsize=37
         ),
+        # ConnectionStatus(
+        #     foreground=COLORS[1],
+        #     background=COLORS[3],
+        #     name="torronto",
+        #     fmt='vpn: {}',
+        #     padding=5
+        # ),
 
         # Keyboard
+        widget.TextBox(
+            text='',
+            background=COLORS[3],
+            foreground=COLORS[4],
+            padding=0,
+            fontsize=37
+        ),
         widget.KeyboardLayout(
             foreground=COLORS[1],
-            background=COLORS[9],
+            background=COLORS[4],
             configured_keyboards=["gb","us"],
             fmt='Keyboard: {}',
             padding=5
@@ -198,9 +254,16 @@ def init_widgets_list():
 
 
         # Date
+        widget.TextBox(
+            text='',
+            background=COLORS[4],
+            foreground=COLORS[5],
+            padding=0,
+            fontsize=37
+        ),
         widget.Clock(
             foreground=COLORS[1],
-            background=COLORS[3],
+            background=COLORS[5],
             format="%A, %B %d - %H:%M "
         ),
     ]
