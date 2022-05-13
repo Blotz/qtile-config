@@ -36,70 +36,66 @@ import layouts as layout_module
 
 logger.info("Code is running")
 ###### MAIN ######
-if __name__ in ["config", "__main__"]:
-    logger.info("Initalising objects")
-    
-    # Initializes qtile variables
-    keys              = KEYS
-    mouse             = MOUSE
+logger.info("Initalising objects")
 
-    layouts           = layout_module.init_layouts()
-    floating_layout = layout_module.init_floating_layout()
+# Initializes qtile variables
+keys              = KEYS
+mouse             = MOUSE
 
-    groups            = [
-        Group("DEV", layout='monadtall'),
-        Group("WWW", layout='monadtall'),
-        Group("SYS", layout='monadtall'),
-        Group("SYS", layout='monadtall'),
-        Group("DOC", layout='monadtall'),
-        Group("VBOX", layout='monadtall'),
-        Group("CHAT", layout='monadtall'),
-        Group("MUS", layout='monadtall'),
-        Group("VID", layout='monadtall'),
-        Group("GFX", layout='floating')
-        ]
+layouts           = layout_module.init_layouts()
+floating_layout = layout_module.init_floating_layout()
 
-    # Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
-    # MOD4 + index Number : Switch to Group[index]
-    # MOD4 + shift + index Number : Send active window to another Group
-    dgroups_key_binder = simple_key_binder("mod4")
+groups            = [
+    Group("DEV", layout='monadtall'),
+    Group("WWW", layout='monadtall'),
+    Group("SYS", layout='monadtall'),
+    Group("SYS", layout='monadtall'),
+    Group("DOC", layout='monadtall'),
+    Group("VBOX", layout='monadtall'),
+    Group("CHAT", layout='monadtall'),
+    Group("MUS", layout='monadtall'),
+    Group("VID", layout='monadtall'),
+    Group("GFX", layout='floating')
+    ]
 
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+# Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
+# MOD4 + index Number : Switch to Group[index]
+# MOD4 + shift + index Number : Send active window to another Group
+dgroups_key_binder = simple_key_binder("mod4")
 
-    dgroups_app_rules = []  # type: List
-    follow_mouse_focus = True
-    bring_front_click = False
-    cursor_warp = False
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
+dgroups_app_rules = []  # type: List
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
 
+auto_fullscreen = True
+focus_on_window_activation = "smart"
+reconfigure_screens = True
 
-    auto_fullscreen = True
-    focus_on_window_activation = "smart"
-    reconfigure_screens = True
+# If things like steam games want to auto-minimize themselves when losing
+# focus, should we respect this or not?
+auto_minimize = True
+### DISPLAYS WIDGETS IN THE SCREEN ####
+##### DEFAULT WIDGET SETTINGS #####
+widget_defaults = dict(
+    font="Ubuntu Bold",
+    fontsize=10,
+    padding=2,
+    background=COLORS[2]
+)
+extension_defaults = widget_defaults.copy()
 
-    # If things like steam games want to auto-minimize themselves when losing
-    # focus, should we respect this or not?
-    auto_minimize = True
-    ### DISPLAYS WIDGETS IN THE SCREEN ####
-    ##### DEFAULT WIDGET SETTINGS #####
-    widget_defaults = dict(
-        font="Ubuntu Bold",
-        fontsize=10,
-        padding=2,
-        background=COLORS[2]
-    )
-    extension_defaults = widget_defaults.copy()
-
-    screens           = widgets.init_screen()
-    main_widgets_list = widgets.init_widgets_list()
-    widgets_screen1   = widgets.init_widgets_screen()
+screens           = widgets.init_screen()
+main_widgets_list = widgets.init_widgets_list()
+widgets_screen1   = widgets.init_widgets_screen()
 
 # https://github.com/qtile/qtile/discussions/3056
 # TODO: Add working implemntation
 
 @hook.subscribe.startup_once
 def start_once():
-
     subprocess.call([f"{os.path.dirname(__file__)}/autostart.sh"])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
