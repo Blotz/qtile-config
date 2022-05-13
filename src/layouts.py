@@ -63,6 +63,6 @@ def init_floating_layout():
         Match(title='Qalculate!'),        # qalculate-gtk
         Match(wm_class='kdenlive'),       # kdenlive
         Match(wm_class='pinentry-gtk-2'),# GPG key password entry
-        Match(title='alsamixe')
+        Match(wm_class='xterm')            # Makes all xterm windows float
     ])
     return floating_layout
