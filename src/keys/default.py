@@ -30,7 +30,7 @@ KEYS = [
         lazy.shutdown(),
         desc='Shutdown Qtile'
         ),
-    Key([mod], "l",
+    Key([mod, "shift"], "l",
         lazy.spawn("slock"),
         desc='Lock Screen'
         ),
@@ -57,14 +57,14 @@ KEYS = [
         desc='Move focus to prev monitor'
         ),
     # Treetab controls
-    Key([mod, "shift"], "h",
-        lazy.layout.move_left(),
-        desc='Move up a section in treetab'
-        ),
-    Key([mod, "shift"], "l",
-        lazy.layout.move_right(),
-        desc='Move down a section in treetab'
-        ),
+    #Key([mod, "shift"], "h",
+    #    lazy.layout.move_left(),
+    #    desc='Move up a section in treetab'
+    #    ),
+    #Key([mod, "shift"], "l",
+    #    lazy.layout.move_right(),
+    #    desc='Move down a section in treetab'
+    #    ),
     # Window controls
     Key([mod], "j",
         lazy.layout.down(),
