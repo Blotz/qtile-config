@@ -30,6 +30,10 @@ KEYS = [
         lazy.shutdown(),
         desc='Shutdown Qtile'
         ),
+    Key([mod], "l",
+        lazy.spawn("slock"),
+        desc='Lock Screen'
+        ),
     # Switch focus to specific monitor (out of three)
     Key([mod], "w",
         lazy.to_screen(0),

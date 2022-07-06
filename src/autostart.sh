@@ -1,7 +1,8 @@
 #!/usr/bin/env bash 
 
-dunst &
 lxsession &
+xautolock -time 10 -locker slock
+dunst &
 picom &
 volumeicon &
 # conky -c $HOME/.config/conky/doomone.conkyrc &
