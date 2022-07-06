@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
 lxsession &
-xautolock -time 10 -locker slock
+xautolock -time 10 -locker slock &
 dunst &
 picom &
 volumeicon &
